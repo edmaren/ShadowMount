@@ -1,0 +1,37 @@
+name: Build Shadow Mounter
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Unzip SDK
+      run: |
+        unzip ps5-payload-sdk.zip -d /opt
+        ls -l /opt
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y make clang gcc libclang-dev
+
+    - name: Compile Shadow Mounter
+      run: |
+        make
+    
+    - name: Upload shadowmount.elf as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: shadowmount.elf
+        path: shadowmount.elf
