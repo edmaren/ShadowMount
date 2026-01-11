@@ -52,7 +52,8 @@ int sceKernelSendNotificationRequest(int, notify_request_t*, size_t, int);
 // Scan Paths
 const char* SCAN_PATHS[] = {
     // Internal
-    "/data/homebrew", "/data/etaHEN/games",
+    // "/data/homebrew", "/data/etaHEN/games",
+    "/data",
 
     // Extended Storage
     "/mnt/ext0/etaHEN/homebrew", "/mnt/ext0/etaHEN/games",
@@ -414,3 +415,4 @@ int main() {
     return 0;
 
 }
+
